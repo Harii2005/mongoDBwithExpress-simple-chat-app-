@@ -7,6 +7,7 @@ const Chat =require ('./models/chat.js');
 
 app.set("views" , path.join(__dirname, "views"));
 app.set("view engine" , "ejs");
+app.use(express.static(path.join(__dirname , "public")));
 
 main()
     .then(() => {
@@ -26,16 +27,10 @@ app.get("/" , (req, res) =>{
     res.send('hello welcome back!!');
 });
 
-
-let chat1 = new Chat({
-    from : 'Hari',
-    to   : 'faang company',
-    msg  : 'thank u for the job',
-    created_at : new Date() //here Date is a constructor it automatically generates a random date and time
-});
-
-chat1.save().then((res)=>{
-    console.log(res);
-}).catch((err) =>{
-    console.log('there is some error');
+//index route
+app.get("/chats" , async (req , res) => {
+    let chats = await Chat.find();
+    console.log(chats);
+    res.render('index.ejs' , {chats});
+     
 });
