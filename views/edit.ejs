@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit route</title>
+</head>
+<body>
+    <h3> edit your chat : <%= chat._id%> </h3>
+    <p>this post was send by <b><%= chat.from %> </b>&nbsp; TO &nbsp;<b><%= chat.to %></b></p> <!-- here &nbsp; is used to add some more space in text -->
+
+
+    <form method="post"  action="/chats/<%= chat.id %>?_method=PUT">
+        <textarea  name="msg" rows="5" column="10"><%=chat.msg%></textarea><br>
+        <button>EDIT</button>        
+    </form>
+
+
+
+    
+</body>
+</html>
