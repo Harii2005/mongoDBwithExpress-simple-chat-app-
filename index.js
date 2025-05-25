@@ -56,7 +56,7 @@ app.post('/chats' , (req , res) => {
     });
     console.log(newchat);
     res.redirect('/chats');
-
+ 
 
     newchat.save().then((res) => {
         console.log('chat was saved');
